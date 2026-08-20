@@ -1,7 +1,7 @@
 # Main Website
 The working directory of my Developer Portfolio Website
 
-<img width="600" alt="banner12" src="https://github.com/user-attachments/assets/9f1d70c5-3547-457f-9922-1cb10fed9f1d" />
+<img width="600" alt="banner12" src="https://github.com/ManiishPal/Manish-Portfolio/blob/main/src/assets/img-main/banner12.png" />
 
 ## Installation Guide
 
