@@ -1,0 +1,56 @@
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #main-box {
+    justify-content: flex-start !important;
+    margin-top: 2rem !important;
+  }
+
+  #background-box {
+    display: none !important;
+  }
+
+  #header-paper,
+  #normal-chip {
+    color: black !important;
+
+    * {
+      color: black !important;
+    }
+  }
+
+  #stamp-chip {
+    display: flex !important;
+
+    * {
+      color: black !important;
+    }
+  }
+
+  .MuiPaper-root {
+    background-color: transparent !important;
+  }
+
+  .MuiAppBar-root {
+    display: none !important;
+  }
+
+  #print-chip {
+    display: none !important;
+  }
+
+  #brand-logo {
+    display: block !important;
+  }
+
+  .fc {
+    color: white !important;
+  }
+}

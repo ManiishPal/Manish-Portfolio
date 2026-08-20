@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="B.Tech Computer Science">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#25100a"/><stop offset="1" stop-color="#8b3f20"/></linearGradient><linearGradient id="cap" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd47a"/><stop offset="1" stop-color="#e95c7c"/></linearGradient></defs>
+  <rect width="1200" height="675" fill="url(#bg)"/><circle cx="930" cy="180" r="210" fill="#ff7190" opacity=".12"/><circle cx="170" cy="560" r="260" fill="#ffb238" opacity=".1"/>
+  <path d="M600 170 830 275 600 380 370 275z" fill="url(#cap)"/><path d="M440 310v105c85 80 235 80 320 0V310l-160 73z" fill="#f78a61"/><path d="M815 280v140" stroke="#ffd47a" stroke-width="15" stroke-linecap="round"/><circle cx="815" cy="435" r="22" fill="#ffd47a"/>
+  <text x="600" y="535" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="58" font-weight="700">B.Tech · Computer Science</text><text x="600" y="592" text-anchor="middle" fill="#ffd47a" font-family="Arial, sans-serif" font-size="34">Medicaps University · 2023 – 2027</text>
+</svg>

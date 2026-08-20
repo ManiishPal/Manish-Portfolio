@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Trebuchet';
+  src: url('/fonts/trebuc.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'San Francisco';
+  src: local('San Francisco Light'), url('/fonts/SF-Pro-Display-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'San Francisco Bold';
+  src: local('San Francisco Bold'), url('/fonts/SF-Pro-Display-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: local('Segoe UI'), url('/fonts/Segoe UI.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  user-select: none;
+}

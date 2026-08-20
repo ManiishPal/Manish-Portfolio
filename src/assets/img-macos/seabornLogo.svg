@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Seaborn">
+  <rect width="64" height="64" rx="12" fill="#4c72b0"/>
+  <path d="M10 42c8-18 16-18 24 0s16 18 20 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="17" cy="27" r="4" fill="#dd8452"/>
+  <circle cx="32" cy="19" r="4" fill="#55a868"/>
+  <circle cx="47" cy="27" r="4" fill="#c44e52"/>
+</svg>
