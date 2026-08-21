@@ -21,15 +21,17 @@ import {
   type WebDataType,
   type WebFilterType,
 } from "./webData";
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { reducerFilter } from "./WebHook";
 import { Check, FilterAlt } from "@mui/icons-material";
 import { useGetImages } from "../akash-commons/Hooks";
 import WebCard from "./WebCard";
+import { useLocation } from "react-router-dom";
 
 export function Application() {
   const isPhone = useMediaQuery("(min-width:800px)");
   const isLoading = useGetImages(images);
+  const location = useLocation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const filterOpen = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -39,11 +41,62 @@ export function Application() {
     setAnchorEl(null);
   };
 
-  const [filterState, dispatchFilteredData] = useReducer(reducerFilter, {
-    selectedTypes: WebTypeFilters,
-    filteredData: webData as WebDataType[],
-    isAllSelected: true,
-  });
+  const getInitialState = () => {
+    const path = location.pathname;
+    if (path.includes("ai-data-science-cloud")) {
+      const type: WebFilterType = "AI, Data Science & Cloud";
+      return {
+        selectedTypes: [type],
+        filteredData: webData.filter((item) => item.type === type),
+        isAllSelected: false,
+      };
+    } else if (path.includes("software-engineering")) {
+      const type: WebFilterType = "Software Engineering & Web Development";
+      return {
+        selectedTypes: [type],
+        filteredData: webData.filter((item) => item.type === type),
+        isAllSelected: false,
+      };
+    } else if (path.includes("specialized-skills")) {
+      const type: WebFilterType = "Specialized Skills & Technologies";
+      return {
+        selectedTypes: [type],
+        filteredData: webData.filter((item) => item.type === type),
+        isAllSelected: false,
+      };
+    }
+    return {
+      selectedTypes: WebTypeFilters,
+      filteredData: webData as WebDataType[],
+      isAllSelected: true,
+    };
+  };
+
+  const [filterState, dispatchFilteredData] = useReducer(
+    reducerFilter,
+    null,
+    getInitialState,
+  );
+
+  useEffect(() => {
+    const path = location.pathname;
+    if (path.includes("ai-data-science-cloud")) {
+      dispatchFilteredData({
+        type: "SET_SINGLE_TYPE",
+        payload: "AI, Data Science & Cloud",
+      });
+    } else if (path.includes("software-engineering")) {
+      dispatchFilteredData({
+        type: "SET_SINGLE_TYPE",
+        payload: "Software Engineering & Web Development",
+      });
+    } else if (path.includes("specialized-skills")) {
+      dispatchFilteredData({
+        type: "SET_SINGLE_TYPE",
+        payload: "Specialized Skills & Technologies",
+      });
+    }
+  }, [location.pathname]);
 
   return (
     <HolderBox isWide>

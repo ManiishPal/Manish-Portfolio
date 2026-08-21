@@ -14,12 +14,18 @@ type FilteredWebData = {
 export function reducerFilter(
   state: FilteredWebData,
   action: {
-    type: "ADD_TYPE" | "REMOVE_TYPE" | "RESET";
+    type: "ADD_TYPE" | "REMOVE_TYPE" | "RESET" | "SET_SINGLE_TYPE";
     payload: WebFilterType;
   },
 ): FilteredWebData {
   window.scrollTo(0, 0);
   switch (action.type) {
+    case "SET_SINGLE_TYPE":
+      return {
+        selectedTypes: [action.payload],
+        filteredData: webData.filter((item) => item.type === action.payload),
+        isAllSelected: false,
+      };
     case "ADD_TYPE": {
       const newSelected = [...state.selectedTypes, action.payload];
 
