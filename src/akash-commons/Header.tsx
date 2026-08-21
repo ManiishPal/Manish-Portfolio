@@ -39,7 +39,7 @@ import { openResumeInNewTab } from "./Utils";
 import DonateDialog from "./DonateDialog";
 import { motion } from "framer-motion";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useGetImages } from "./Hooks";
 import { headerImages } from "./headerData";
 
@@ -110,19 +110,14 @@ function Header() {
     return () => window.removeEventListener("open-donate-modal", handleOpenDonate);
   }, []);
 
+  const location = useLocation();
+
   // Breadcrumbs
   const breadcrumbLabel = useMemo(() => {
-    let p = window.location.hash.replace(/^#!?/, "");
-    const path = (() => {
-      if (!p) return "/";
-      if (!p.startsWith("/")) p = "/" + p;
-      const match = p.match(/^[^?#]*/);
-      return match ? match[0] : "/";
-    })();
-
+    const path = location.pathname;
     if (path === "/") return "";
     if (path.startsWith("/certifications")) {
-      return "Certifications";
+      return "Certificates";
     }
     if (
       [
@@ -140,7 +135,7 @@ function Header() {
     } else {
       return "Not Found";
     }
-  }, []);
+  }, [location.pathname]);
 
   // Get Images
   const isLoading = useGetImages(headerImages);
