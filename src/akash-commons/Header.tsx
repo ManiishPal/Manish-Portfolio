@@ -262,7 +262,7 @@ function Header() {
                   <MenuItem
                     sx={{ fontSize: "0.9rem" }}
                     onClick={() => {
-                      scrolldownToSection("work experience");
+                      scrolldownToSection("experience & certifications");
                     }}
                   >
                     Experience & Certifications
