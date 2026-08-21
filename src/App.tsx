@@ -3,14 +3,14 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { orange, pink } from "@mui/material/colors";
 import { GlobalStyles, CssBaseline } from "@mui/material";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Education from "./akash-education/Education.tsx";
-import QuestPlunge from "./akash-game/QuestPlunge.tsx";
-import Web from "./akash-web/Web.tsx";
-import ScrollToTop from "./akash-commons/ScrollToTop.tsx";
+import Education from "./manish-education/Education.tsx";
+import QuestPlunge from "./manish-game/QuestPlunge.tsx";
+import Web from "./manish-web/Web.tsx";
+import ScrollToTop from "./manish-commons/ScrollToTop.tsx";
 import { NotFound } from "./NotFound.tsx";
-import Contact from "./akash-main/Contact.tsx";
-import { Application } from "./akash-work/Application.tsx";
-import { Policy } from "./akash-login/Legal.tsx";
+import Contact from "./manish-main/Contact.tsx";
+import { Application } from "./manish-work/Application.tsx";
+import { Policy } from "./manish-login/Legal.tsx";
 
 const appTheme = createTheme({
   cssVariables: {

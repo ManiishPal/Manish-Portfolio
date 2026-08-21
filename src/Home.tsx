@@ -1,5 +1,5 @@
 import "./styles/App.css";
-import Header from "./akash-commons/Header";
+import Header from "./manish-commons/Header";
 import { Box, Skeleton, Stack, useMediaQuery } from "@mui/material";
 import styled from "@emotion/styled";
 import logo from "./assets/logo2.png";
@@ -11,11 +11,11 @@ import {
   otherData,
   workData,
   workDataPhone,
-} from "./akash-main/appData";
-import { openGitHub, openLinkedIn, openLeetCode } from "./akash-commons/Utils";
+} from "./manish-main/appData";
+import { openGitHub, openLinkedIn, openLeetCode } from "./manish-commons/Utils";
 import { grey, blue, amber } from "@mui/material/colors";
-import TopChip from "./akash-main/TopChip";
-import MainSection from "./akash-main/MainSection";
+import TopChip from "./manish-main/TopChip";
+import MainSection from "./manish-main/MainSection";
 import {
   DataObject,
   WorkOutline as Work,
@@ -23,17 +23,17 @@ import {
   DescriptionOutlined as NoteAdd,
   PersonOutlined,
 } from "@mui/icons-material";
-import Footer from "./akash-commons/Footer";
+import Footer from "./manish-commons/Footer";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useGetImages } from "./akash-commons/Hooks";
-import MacDialog from "./akash-commons/MacDialog";
-import { MacDialogContext } from "./akash-main/appData";
-import MacDock from "./akash-macos/MacDock";
+import { useGetImages } from "./manish-commons/Hooks";
+import MacDialog from "./manish-commons/MacDialog";
+import { MacDialogContext } from "./manish-main/appData";
+import MacDock from "./manish-macos/MacDock";
 import Background from "./Background";
-import useGeneralInfo from "./akash-commons/firebaseHooks";
-import { MacNotification } from "./akash-macos/MacNotification";
-import HeaderChip from "./akash-main/HeaderChip";
+import useGeneralInfo from "./manish-commons/firebaseHooks";
+import { MacNotification } from "./manish-macos/MacNotification";
+import HeaderChip from "./manish-main/HeaderChip";
 
 function Home() {
   const [openMacDialog, setOpenMacDialog] = useState<boolean>(false);

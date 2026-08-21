@@ -24,7 +24,7 @@ export default defineConfig([
       'react-refresh': reactRefresh,
     },
     rules: {
-      'prettier/prettier': 'error',
+      'prettier/prettier': ['error', { endOfLine: 'auto' }],
       'react-refresh/only-export-components': 'warn',
     },
   },

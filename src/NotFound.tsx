@@ -1,5 +1,5 @@
 import { Button, Stack, Typography, useMediaQuery } from "@mui/material";
-import HolderBox from "./akash-commons/HolderBox";
+import HolderBox from "./manish-commons/HolderBox";
 import error from "./assets/img-commons/error.png";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";

@@ -20,7 +20,7 @@ import fog from "./assets/img-parallax/fog.png";
 import sun from "./assets/img-parallax/sun.svg";
 import moon from "./assets/img-parallax/moon.svg";
 import nightsky from "./assets/img-parallax/stars.jpg";
-import { useGetImages } from "./akash-commons/Hooks";
+import { useGetImages } from "./manish-commons/Hooks";
 import { motion } from "framer-motion";
 import "./styles/Image.css";
 import { ArrowCircleDownOutlined, SwipeUpOutlined } from "@mui/icons-material";
@@ -286,8 +286,7 @@ const NameStack = styled("div")({
 });
 
 const NameText = styled("div")({
-  fontFamily:
-    '"Brush Script MT", "Segoe Script", "Snell Roundhand", cursive',
+  fontFamily: '"Brush Script MT", "Segoe Script", "Snell Roundhand", cursive',
   fontSize: "clamp(5rem, 12vw, 11rem)",
   fontWeight: 700,
   fontStyle: "italic",
@@ -300,13 +299,13 @@ const NameText = styled("div")({
 
 const Reflection = styled("div")({
   marginTop: "-0.12em",
-  fontFamily:
-    '"Brush Script MT", "Segoe Script", "Snell Roundhand", cursive',
+  fontFamily: '"Brush Script MT", "Segoe Script", "Snell Roundhand", cursive',
   fontSize: "clamp(5rem, 12vw, 11rem)",
   fontWeight: 700,
   fontStyle: "italic",
   letterSpacing: "0.02em",
-  background: "linear-gradient(180deg, rgba(255, 246, 251, 0.95) 0%, rgba(255, 135, 219, 0.65) 58%, rgba(255, 79, 180, 0.18) 100%)",
+  background:
+    "linear-gradient(180deg, rgba(255, 246, 251, 0.95) 0%, rgba(255, 135, 219, 0.65) 58%, rgba(255, 79, 180, 0.18) 100%)",
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
   transform: "scaleY(-1)",
