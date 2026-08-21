@@ -4,8 +4,6 @@ import { orange, pink } from "@mui/material/colors";
 import { GlobalStyles, CssBaseline } from "@mui/material";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Education from "./akash-education/Education.tsx";
-import Verafin from "./akash-work/Verafin.tsx";
-import EyePort from "./akash-work/EyePort.tsx";
 import QuestPlunge from "./akash-game/QuestPlunge.tsx";
 import Web from "./akash-web/Web.tsx";
 import ScrollToTop from "./akash-commons/ScrollToTop.tsx";
@@ -89,8 +87,6 @@ export function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/education" element={<Education />} />
-          <Route path="/verafin/:id" element={<Verafin />} />
-          <Route path="/eyeport" element={<EyePort />} />
           <Route path="/web" element={<Web />} />
           <Route path="/app" element={<Application />} />
           <Route path="/contact" element={<Contact />} />

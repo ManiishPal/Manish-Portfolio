@@ -2,17 +2,6 @@ export function openResumeInNewTab() {
   window.open("/Resume.pdf", "_blank");
 }
 
-export function openDetailedExplanation() {
-  window.open("/EyePort Algorithm Explanation.pdf", "_blank");
-}
-
-export function downloadEyePort() {
-  window.open(
-    "https://github.com/akashcraft/EyePort/releases/download/V3.3.3/EyePort.3.3.3.Setup.File.exe",
-    "_blank",
-  );
-}
-
 export function downloadQuestPlunge() {
   window.open(
     "https://github.com/akashcraft/QuestPlunge/releases/download/V1.0.0/Quest.Plunge.1.0.0.Setup.File.exe",

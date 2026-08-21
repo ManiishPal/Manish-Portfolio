@@ -121,12 +121,8 @@ function Header() {
     })();
 
     if (path === "/") return "";
-    if (path.includes("/verafin/")) {
-      return "Verafin";
-    }
     if (
       [
-        "/eyeport",
         "/education",
         "/app",
         "/web",
@@ -134,9 +130,7 @@ function Header() {
         "/legal",
       ].includes(path)
     ) {
-      if (path === "/eyeport") {
-        return "EyePort";
-      } else if (path === "/questplunge") {
+      if (path === "/questplunge") {
         return "Quest Plunge";
       }
       return path.charAt(1).toUpperCase() + path.slice(2);
