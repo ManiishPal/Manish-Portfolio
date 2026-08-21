@@ -10,6 +10,7 @@ import ScrollToTop from "./akash-commons/ScrollToTop.tsx";
 import { NotFound } from "./NotFound.tsx";
 import Contact from "./akash-main/Contact.tsx";
 import { Application } from "./akash-app/Application.tsx";
+import { Certifications } from "./akash-certifications/Certifications.tsx";
 import { Policy } from "./akash-login/Legal.tsx";
 
 const appTheme = createTheme({
@@ -89,6 +90,8 @@ export function App() {
           <Route path="/education" element={<Education />} />
           <Route path="/web" element={<Web />} />
           <Route path="/app" element={<Application />} />
+          <Route path="/certifications/*" element={<Certifications />} />
+          <Route path="/certifications/:category" element={<Certifications />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/questplunge" element={<QuestPlunge />} />
           <Route path="/legal" element={<Policy />} />

@@ -58,12 +58,17 @@ function WebCard({ data, isLoading, isPhone }: WebCardProps) {
           borderRadius: "1rem",
         }}
         onClick={() => {
-          if (data.smallChipLinks[0].startsWith("https://")) {
-            window.open(data.smallChipLinks[0], "_blank");
-          } else if (data.smallChipLinks[0].includes(".html")) {
-            window.location.href = data.smallChipLinks[0];
+          const link = data.smallChipLinks[0];
+          if (
+            link.startsWith("https://") ||
+            link.toLowerCase().includes(".pdf") ||
+            link.startsWith("blob:")
+          ) {
+            window.open(link, "_blank");
+          } else if (link.includes(".html")) {
+            window.location.href = link;
           } else {
-            navigate(data.smallChipLinks[0]);
+            navigate(link);
           }
         }}
       >
@@ -137,14 +142,17 @@ function WebCard({ data, isLoading, isPhone }: WebCardProps) {
                       }
                       onClick={(event) => {
                         event.stopPropagation();
-                        if (data.smallChipLinks[index].includes("https://")) {
-                          window.open(data.smallChipLinks[index], "_blank");
-                        } else if (
-                          data.smallChipLinks[index].includes(".html")
+                        const link = data.smallChipLinks[index];
+                        if (
+                          link.startsWith("https://") ||
+                          link.toLowerCase().includes(".pdf") ||
+                          link.startsWith("blob:")
                         ) {
-                          window.location.href = data.smallChipLinks[index];
+                          window.open(link, "_blank");
+                        } else if (link.includes(".html")) {
+                          window.location.href = link;
                         } else {
-                          navigate(data.smallChipLinks[index]);
+                          navigate(link);
                         }
                       }}
                       icon={
@@ -180,12 +188,17 @@ function WebCard({ data, isLoading, isPhone }: WebCardProps) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={() => {
-          if (data.smallChipLinks[0].startsWith("https://")) {
-            window.open(data.smallChipLinks[0], "_blank");
-          } else if (data.smallChipLinks[0].includes(".html")) {
-            window.location.href = data.smallChipLinks[0];
+          const link = data.smallChipLinks[0];
+          if (
+            link.startsWith("https://") ||
+            link.toLowerCase().includes(".pdf") ||
+            link.startsWith("blob:")
+          ) {
+            window.open(link, "_blank");
+          } else if (link.includes(".html")) {
+            window.location.href = link;
           } else {
-            navigate(data.smallChipLinks[0]);
+            navigate(link);
           }
         }}
       >
@@ -255,12 +268,17 @@ function WebCard({ data, isLoading, isPhone }: WebCardProps) {
                   label={label}
                   onClick={(event) => {
                     event.stopPropagation();
-                    if (data.smallChipLinks[index].includes("https://")) {
-                      window.open(data.smallChipLinks[index], "_blank");
-                    } else if (data.smallChipLinks[index].includes(".html")) {
-                      window.location.href = data.smallChipLinks[index];
+                    const link = data.smallChipLinks[index];
+                    if (
+                      link.startsWith("https://") ||
+                      link.toLowerCase().includes(".pdf") ||
+                      link.startsWith("blob:")
+                    ) {
+                      window.open(link, "_blank");
+                    } else if (link.includes(".html")) {
+                      window.location.href = link;
                     } else {
-                      navigate(data.smallChipLinks[index]);
+                      navigate(link);
                     }
                   }}
                   icon={

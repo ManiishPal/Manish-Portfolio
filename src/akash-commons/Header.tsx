@@ -121,6 +121,9 @@ function Header() {
     })();
 
     if (path === "/") return "";
+    if (path.startsWith("/certifications")) {
+      return "Certifications";
+    }
     if (
       [
         "/education",
