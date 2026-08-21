@@ -57,35 +57,84 @@ export const images = [
   udemyImg,
 ];
 
+export type CategoryKey =
+  | "ai-data-science-cloud"
+  | "software-engineering"
+  | "specialized-skills";
+
+export type MainCategoryTitle =
+  | "AI, Data Science & Cloud"
+  | "Software Engineering & Web Development"
+  | "Specialized Skills & Technologies";
+
+export type SubFilterType =
+  // AI, Data Science & Cloud
+  | "Data Science"
+  | "Generative AI"
+  | "AI & Machine Learning"
+  | "Cloud Computing"
+  // Software Engineering & Web Development
+  | "Full Stack Development"
+  | "Frontend Development"
+  | "DSA & Programming"
+  | "Software Engineering"
+  // Specialized Skills & Technologies
+  | "3D & Creative Development"
+  | "Algorithms & Data Structures"
+  | "Cybersecurity"
+  | "Robotics & Controls"
+  | "Project Management";
+
+export const categoryFiltersMap: Record<CategoryKey, SubFilterType[]> = {
+  "ai-data-science-cloud": [
+    "Data Science",
+    "Generative AI",
+    "AI & Machine Learning",
+    "Cloud Computing",
+  ],
+  "software-engineering": [
+    "Full Stack Development",
+    "Frontend Development",
+    "DSA & Programming",
+    "Software Engineering",
+  ],
+  "specialized-skills": [
+    "3D & Creative Development",
+    "Algorithms & Data Structures",
+    "Cybersecurity",
+    "Robotics & Controls",
+    "Project Management",
+  ],
+};
+
+export const categoryTitleMap: Record<CategoryKey, MainCategoryTitle> = {
+  "ai-data-science-cloud": "AI, Data Science & Cloud",
+  "software-engineering": "Software Engineering & Web Development",
+  "specialized-skills": "Specialized Skills & Technologies",
+};
+
 export type CertificationDataType = {
   appName: string;
   image: string;
   description: string;
-  type: CertificationFilterType;
+  category: CategoryKey;
+  subType: SubFilterType;
+  type?: string;
   isWideOnly?: boolean;
   smallChipLabel: string[];
   smallChipLinks: string[];
 };
 
-export type CertificationFilterType =
-  | "AI, Data Science & Cloud"
-  | "Software Engineering & Web Development"
-  | "Specialized Skills & Technologies";
-
-export const CertificationTypeFilters: CertificationFilterType[] = [
-  "AI, Data Science & Cloud",
-  "Software Engineering & Web Development",
-  "Specialized Skills & Technologies",
-];
-
 export const certificationData: CertificationDataType[] = [
   // =====================================================
-  // AI, DATA SCIENCE & CLOUD
+  // 1. AI, DATA SCIENCE & CLOUD (6 items)
   // =====================================================
 
   {
     appName: "IBM Data Science Professional Certificate",
     image: ibmImg,
+    category: "ai-data-science-cloud",
+    subType: "Data Science",
     type: "AI, Data Science & Cloud",
     description:
       "Professional certification covering data science, Python, SQL, data analysis, visualization, and machine learning.",
@@ -96,6 +145,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Inspect Rich Documents with Gemini Multimodality and Multimodal RAG",
     image: googleCloudImg,
+    category: "ai-data-science-cloud",
+    subType: "AI & Machine Learning",
     type: "AI, Data Science & Cloud",
     description:
       "Google Cloud skill badge focused on Gemini multimodality and multimodal RAG.",
@@ -106,6 +157,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Cloud Computing",
     image: nptelImg,
+    category: "ai-data-science-cloud",
+    subType: "Cloud Computing",
     type: "AI, Data Science & Cloud",
     description:
       "NPTEL Elite certification covering cloud computing concepts and technologies.",
@@ -116,6 +169,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Generative AI: Elevate Your Data Science Career",
     image: ibmGenaiImg,
+    category: "ai-data-science-cloud",
+    subType: "Generative AI",
     type: "AI, Data Science & Cloud",
     description:
       "IBM certification focused on generative AI and its applications in data science.",
@@ -126,6 +181,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Summer Internship in Google AI-ML",
     image: mediImg,
+    category: "ai-data-science-cloud",
+    subType: "AI & Machine Learning",
     type: "AI, Data Science & Cloud",
     description:
       "Summer internship focused on Google AI and machine learning at Medicaps University.",
@@ -136,6 +193,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "GenAI Powered Data Analytics Job Simulation",
     image: tataImg,
+    category: "ai-data-science-cloud",
+    subType: "Generative AI",
     type: "AI, Data Science & Cloud",
     description:
       "Practical job simulation focused on generative AI and data analytics.",
@@ -144,12 +203,14 @@ export const certificationData: CertificationDataType[] = [
   },
 
   // =====================================================
-  // SOFTWARE ENGINEERING & WEB DEVELOPMENT
+  // 2. SOFTWARE ENGINEERING & WEB DEVELOPMENT (6 items)
   // =====================================================
 
   {
     appName: "Delta: Full Stack Web Development",
     image: apnaDeltaImg,
+    category: "software-engineering",
+    subType: "Full Stack Development",
     type: "Software Engineering & Web Development",
     description:
       "Full Stack Web Development certification covering modern web technologies and development.",
@@ -160,6 +221,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Front-End Software Engineering Job Simulation",
     image: skyscannerImg,
+    category: "software-engineering",
+    subType: "Frontend Development",
     type: "Software Engineering & Web Development",
     description:
       "Practical front-end software engineering job simulation with Skyscanner.",
@@ -170,6 +233,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Alpha: DSA with Java",
     image: apnaDsaImg,
+    category: "software-engineering",
+    subType: "DSA & Programming",
     type: "Software Engineering & Web Development",
     description:
       "Data Structures and Algorithms certification using Java.",
@@ -180,6 +245,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Advanced Software Engineering Job Simulation",
     image: walmartImg,
+    category: "software-engineering",
+    subType: "Software Engineering",
     type: "Software Engineering & Web Development",
     description:
       "Advanced software engineering job simulation with Walmart Global Tech.",
@@ -190,6 +257,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Software Engineering Job Simulation",
     image: jpmorganImg,
+    category: "software-engineering",
+    subType: "Software Engineering",
     type: "Software Engineering & Web Development",
     description:
       "Practical software engineering job simulation with JPMorgan Chase & Co.",
@@ -200,6 +269,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Software Engineering Job Simulation",
     image: hpeImg,
+    category: "software-engineering",
+    subType: "Software Engineering",
     type: "Software Engineering & Web Development",
     description:
       "Software engineering job simulation with HPE.",
@@ -208,12 +279,14 @@ export const certificationData: CertificationDataType[] = [
   },
 
   // =====================================================
-  // SPECIALIZED SKILLS & TECHNOLOGIES
+  // 3. SPECIALIZED SKILLS & TECHNOLOGIES (6 items)
   // =====================================================
 
   {
     appName: "Three.js Journey",
     image: threejsImg,
+    category: "specialized-skills",
+    subType: "3D & Creative Development",
     type: "Specialized Skills & Technologies",
     description:
       "Three.js course covering 3D web development and interactive experiences.",
@@ -224,6 +297,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Advanced Data Structures and Algorithms",
     image: boardImg,
+    category: "specialized-skills",
+    subType: "Algorithms & Data Structures",
     type: "Specialized Skills & Technologies",
     description:
       "Advanced course focused on data structures and algorithms.",
@@ -234,6 +309,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Cyber Job Simulation",
     image: deloitteCyberImg,
+    category: "specialized-skills",
+    subType: "Cybersecurity",
     type: "Specialized Skills & Technologies",
     description:
       "Practical cybersecurity job simulation with Deloitte.",
@@ -244,6 +321,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Robotics and Controls Job Simulation",
     image: johnsonImg,
+    category: "specialized-skills",
+    subType: "Robotics & Controls",
     type: "Specialized Skills & Technologies",
     description:
       "Robotics and controls job simulation with Johnson & Johnson MedTech.",
@@ -254,6 +333,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Project Manager Job Simulation",
     image: siemensImg,
+    category: "specialized-skills",
+    subType: "Project Management",
     type: "Specialized Skills & Technologies",
     description:
       "Project management job simulation with Siemens.",
@@ -264,6 +345,8 @@ export const certificationData: CertificationDataType[] = [
   {
     appName: "Complete Blender Megacourse: Beginner to Expert",
     image: udemyImg,
+    category: "specialized-skills",
+    subType: "3D & Creative Development",
     type: "Specialized Skills & Technologies",
     description:
       "Comprehensive Blender course covering 3D modeling, animation, and related workflows.",
@@ -274,9 +357,23 @@ export const certificationData: CertificationDataType[] = [
 
 export const certificateData = certificationData;
 
-// Aliases for compatibility
+// Aliases
 export type WebDataType = CertificationDataType;
-export type WebFilterType = CertificationFilterType;
-export const WebTypeFilters = CertificationTypeFilters;
+export type WebFilterType = SubFilterType;
+export const WebTypeFilters = [
+  "Data Science",
+  "Generative AI",
+  "AI & Machine Learning",
+  "Cloud Computing",
+  "Full Stack Development",
+  "Frontend Development",
+  "DSA & Programming",
+  "Software Engineering",
+  "3D & Creative Development",
+  "Algorithms & Data Structures",
+  "Cybersecurity",
+  "Robotics & Controls",
+  "Project Management",
+] as SubFilterType[];
 export const webData = certificationData;
 export const appData = certificationData;

@@ -16,13 +16,12 @@ import { useMediaQuery } from "@mui/material";
 import styled from "@emotion/styled";
 import {
   webData,
-  WebTypeFilters,
+  categoryFiltersMap,
   images,
-  type WebDataType,
-  type WebFilterType,
+  type CategoryKey,
+  type SubFilterType,
 } from "./webData";
-import { useEffect, useReducer, useState } from "react";
-import { reducerFilter } from "./WebHook";
+import { useEffect, useState } from "react";
 import { Check, FilterAlt } from "@mui/icons-material";
 import { useGetImages } from "../akash-commons/Hooks";
 import WebCard from "./WebCard";
@@ -41,62 +40,52 @@ export function Application() {
     setAnchorEl(null);
   };
 
-  const getInitialState = () => {
-    const path = location.pathname;
-    if (path.includes("ai-data-science-cloud")) {
-      const type: WebFilterType = "AI, Data Science & Cloud";
-      return {
-        selectedTypes: [type],
-        filteredData: webData.filter((item) => item.type === type),
-        isAllSelected: false,
-      };
-    } else if (path.includes("software-engineering")) {
-      const type: WebFilterType = "Software Engineering & Web Development";
-      return {
-        selectedTypes: [type],
-        filteredData: webData.filter((item) => item.type === type),
-        isAllSelected: false,
-      };
-    } else if (path.includes("specialized-skills")) {
-      const type: WebFilterType = "Specialized Skills & Technologies";
-      return {
-        selectedTypes: [type],
-        filteredData: webData.filter((item) => item.type === type),
-        isAllSelected: false,
-      };
-    }
-    return {
-      selectedTypes: WebTypeFilters,
-      filteredData: webData as WebDataType[],
-      isAllSelected: true,
-    };
+  const getCategoryKey = (pathname: string): CategoryKey => {
+    if (pathname.includes("software-engineering")) return "software-engineering";
+    if (pathname.includes("specialized-skills")) return "specialized-skills";
+    return "ai-data-science-cloud";
   };
 
-  const [filterState, dispatchFilteredData] = useReducer(
-    reducerFilter,
-    null,
-    getInitialState,
-  );
+  const categoryKey = getCategoryKey(location.pathname);
+  const activeFilters = categoryFiltersMap[categoryKey];
+  const categoryData = webData.filter((item) => item.category === categoryKey);
 
+  // Selected sub-filters state for the active collection
+  const [selectedTypes, setSelectedTypes] = useState<SubFilterType[]>(activeFilters);
+
+  // When category route changes, reset sub-filters to 'All' for that category
   useEffect(() => {
-    const path = location.pathname;
-    if (path.includes("ai-data-science-cloud")) {
-      dispatchFilteredData({
-        type: "SET_SINGLE_TYPE",
-        payload: "AI, Data Science & Cloud",
-      });
-    } else if (path.includes("software-engineering")) {
-      dispatchFilteredData({
-        type: "SET_SINGLE_TYPE",
-        payload: "Software Engineering & Web Development",
-      });
-    } else if (path.includes("specialized-skills")) {
-      dispatchFilteredData({
-        type: "SET_SINGLE_TYPE",
-        payload: "Specialized Skills & Technologies",
-      });
+    setSelectedTypes(activeFilters);
+  }, [categoryKey]);
+
+  const isAllSelected = selectedTypes.length === activeFilters.length;
+
+  const handleSubFilterClick = (type: SubFilterType) => {
+    if (isAllSelected) {
+      setSelectedTypes([type]);
+    } else if (selectedTypes.includes(type)) {
+      if (selectedTypes.length === 1) {
+        setSelectedTypes(activeFilters);
+      } else {
+        setSelectedTypes(selectedTypes.filter((t) => t !== type));
+      }
+    } else {
+      const next = [...selectedTypes, type];
+      if (next.length === activeFilters.length) {
+        setSelectedTypes(activeFilters);
+      } else {
+        setSelectedTypes(next);
+      }
     }
-  }, [location.pathname]);
+  };
+
+  const handleSelectAll = () => {
+    setSelectedTypes(activeFilters);
+  };
+
+  const filteredData = categoryData.filter((item) =>
+    selectedTypes.includes(item.subType),
+  );
 
   return (
     <HolderBox isWide>
@@ -125,48 +114,31 @@ export function Application() {
               <ListItem disablePadding>
                 <StyledListItemButton
                   sx={{
-                    backgroundColor: filterState.isAllSelected
+                    backgroundColor: isAllSelected
                       ? "var(--mui-palette-background-light)"
                       : "none",
                   }}
-                  onClick={() => {
-                    dispatchFilteredData({
-                      type: "RESET",
-                      payload: "" as WebFilterType,
-                    });
-                  }}
+                  onClick={handleSelectAll}
                 >
                   <ListItemText primary="All" />
-                  {filterState.isAllSelected && <Check />}
+                  {isAllSelected && <Check />}
                 </StyledListItemButton>
               </ListItem>
-              {WebTypeFilters.map((type, index) => (
-                <ListItem key={index} disablePadding onClick={() => {}}>
+              {activeFilters.map((type, index) => (
+                <ListItem key={index} disablePadding>
                   <StyledListItemButton
                     sx={{
                       backgroundColor:
-                        filterState.selectedTypes.includes(type) &&
-                        !filterState.isAllSelected
+                        selectedTypes.includes(type) && !isAllSelected
                           ? "var(--mui-palette-background-light)"
                           : "none",
                     }}
-                    onClick={() => {
-                      if (filterState.selectedTypes.includes(type)) {
-                        dispatchFilteredData({
-                          type: "REMOVE_TYPE",
-                          payload: type as WebFilterType,
-                        });
-                      } else {
-                        dispatchFilteredData({
-                          type: "ADD_TYPE",
-                          payload: type as WebFilterType,
-                        });
-                      }
-                    }}
+                    onClick={() => handleSubFilterClick(type)}
                   >
                     <ListItemText primary={type} />
-                    {filterState.selectedTypes.includes(type) &&
-                      !filterState.isAllSelected && <Check />}
+                    {selectedTypes.includes(type) && !isAllSelected && (
+                      <Check />
+                    )}
                   </StyledListItemButton>
                 </ListItem>
               ))}
@@ -191,22 +163,12 @@ export function Application() {
                   marginLeft: "0.25rem",
                 }}
               >
-                {WebTypeFilters.map((type, index) => (
+                {activeFilters.map((type, index) => (
                   <MenuItem
                     key={index}
                     value={type}
                     onClick={() => {
-                      if (filterState.selectedTypes.includes(type)) {
-                        dispatchFilteredData({
-                          type: "REMOVE_TYPE",
-                          payload: type as WebFilterType,
-                        });
-                      } else {
-                        dispatchFilteredData({
-                          type: "ADD_TYPE",
-                          payload: type as WebFilterType,
-                        });
-                      }
+                      handleSubFilterClick(type);
                       handleClose();
                     }}
                   >
@@ -214,30 +176,20 @@ export function Application() {
                   </MenuItem>
                 ))}
               </Menu>
-              {!filterState.isAllSelected && (
+              {!isAllSelected && (
                 <>
                   <Chip
                     sx={{ padding: "0.5rem" }}
-                    onDelete={() => {
-                      dispatchFilteredData({
-                        type: "RESET",
-                        payload: "" as WebFilterType,
-                      });
-                    }}
+                    onDelete={handleSelectAll}
                     label="Clear All"
                     onClick={handleClick}
                   />
-                  {filterState.selectedTypes.map((type, index) => (
+                  {selectedTypes.map((type, index) => (
                     <Chip
                       key={index}
                       sx={{ padding: "0.5rem" }}
                       label={type}
-                      onDelete={() => {
-                        dispatchFilteredData({
-                          type: "REMOVE_TYPE",
-                          payload: type as WebFilterType,
-                        });
-                      }}
+                      onDelete={() => handleSubFilterClick(type)}
                     />
                   ))}
                 </>
@@ -251,7 +203,7 @@ export function Application() {
             flexWrap={!isPhone ? "nowrap" : "wrap"}
             gap={!isPhone ? "0rem" : "1.5rem"}
           >
-            {filterState.filteredData.map((item, index) => (
+            {filteredData.map((item, index) => (
               <WebCard
                 key={index}
                 data={item}
