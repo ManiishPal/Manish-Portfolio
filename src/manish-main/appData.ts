@@ -49,7 +49,7 @@ export const codingData: genericAppData[] = [
       "Discover my interactive 3D experiences built with Three.js, React Three Fiber, GSAP, and Blender, combining animation, graphics, and immersive web experiences.",
     image: banner2,
     linkText: "Explore",
-    link: "app",
+    link: "3d",
   },
   {
     title: "AI & Machine Learning",

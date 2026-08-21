@@ -120,6 +120,9 @@ function Header() {
     if (path.startsWith("/certifications")) {
       return "Certificates";
     }
+    if (path === "/3d") {
+      return "3D";
+    }
     if (
       ["/education", "/app", "/web", "/questplunge", "/legal"].includes(path)
     ) {

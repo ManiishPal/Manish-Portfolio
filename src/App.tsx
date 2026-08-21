@@ -9,6 +9,7 @@ import Web from "./manish-web/Web.tsx";
 import ScrollToTop from "./manish-commons/ScrollToTop.tsx";
 import { NotFound } from "./NotFound.tsx";
 import Contact from "./manish-main/Contact.tsx";
+import ThreeD from "./manish-3d/ThreeD.tsx";
 import { Application } from "./manish-work/Application.tsx";
 import { Policy } from "./manish-login/Legal.tsx";
 
@@ -88,7 +89,8 @@ export function App() {
           <Route index element={<Home />} />
           <Route path="/education" element={<Education />} />
           <Route path="/web" element={<Web />} />
-          <Route path="/app" element={<Application />} />
+          <Route path="/3d" element={<ThreeD />} />
+          <Route path="/app" element={<ThreeD />} />
           <Route path="/certifications" element={<Application />} />
           <Route path="/certifications/*" element={<Application />} />
           <Route path="/contact" element={<Contact />} />
