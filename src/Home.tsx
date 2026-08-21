@@ -205,7 +205,6 @@ function Home() {
                 icon={<Work sx={ChipIconStyle} />}
                 genericData={isPhone ? workDataPhone : workData}
                 isLoading={isLoading}
-                isDuration
               />
               <MainSection
                 heading="Education"

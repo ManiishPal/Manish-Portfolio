@@ -63,59 +63,55 @@ export const codingData: genericAppData[] = [
 
 export const workData = [
   {
-    title: "Research and Development",
-    subtitle: "8 months",
+    title: "AI, Data Science & Cloud",
     description:
-      "Worked with Marine Institute and MUN to develop an automated eye tracking software.",
+      "Certifications in AI, data science, generative AI, machine learning, and cloud technologies.",
     image: banner4,
-    linkText: "Learn More",
-    link: "eyeport",
+    linkText: "View Certifications",
+    link: "certifications/ai-data-science-cloud",
   },
   {
-    title: "UI Developer",
-    subtitle: "8 months",
-    description: "Worked with Nasdaq Verafin in the Front-End Development Team",
-    image: banner5,
-    linkText: "Learn More",
-    link: "verafin/1",
-  },
-  {
-    title: "Datalakes Developer",
-    subtitle: "Present",
+    title: "Software Engineering & Web Development",
     description:
-      "Working with Nasdaq Verafin in the Datalakes Implementation Team",
+      "Certifications and job simulations focused on software engineering, web development, and programming.",
+    image: banner5,
+    linkText: "View Certifications",
+    link: "certifications/software-engineering",
+  },
+  {
+    title: "Specialized Skills & Technologies",
+    description:
+      "Certifications covering algorithms, 3D development, cybersecurity, robotics, and other technical skills.",
     image: banner6,
-    linkText: "Learn More",
-    link: "verafin/2",
+    linkText: "View Certifications",
+    link: "certifications/specialized-skills",
   },
 ];
 
 export const workDataPhone = [
   {
-    title: "Research and Development",
-    subtitle: "8 months",
+    title: "AI, Data Science & Cloud",
     description:
-      "Worked with Marine Institute and MUN to develop an automated eye tracking software.",
+      "AI, data science, generative AI, machine learning, and cloud technologies.",
     image: banner4,
-    linkText: "Learn More",
-    link: "eyeport",
+    linkText: "View Certifications",
+    link: "certifications/ai-data-science-cloud",
   },
   {
-    title: "UI Developer",
-    subtitle: "8 months",
-    description: "Worked with Nasdaq Verafin in the Front-End Development Team",
-    image: banner5phone,
-    linkText: "Learn More",
-    link: "verafin/1",
-  },
-  {
-    title: "Datalakes Developer",
-    subtitle: "Present",
+    title: "Software Engineering & Web Development",
     description:
-      "Working with Nasdaq Verafin in the Datalakes Implementation Team",
+      "Software engineering, web development, programming, and practical job simulations.",
     image: banner5phone,
-    linkText: "Learn More",
-    link: "verafin/2",
+    linkText: "View Certifications",
+    link: "certifications/software-engineering",
+  },
+  {
+    title: "Specialized Skills & Technologies",
+    description:
+      "Algorithms, 3D development, cybersecurity, robotics, and other technical skills.",
+    image: banner6,
+    linkText: "View Certifications",
+    link: "certifications/specialized-skills",
   },
 ];
 

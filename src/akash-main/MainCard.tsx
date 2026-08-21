@@ -29,7 +29,11 @@ type MainCardProps = {
 };
 
 function MainCard({ data, isDuration, isLoading = false }: MainCardProps) {
-  const subtitle = isDuration ? "Duration: " + data.subtitle : data.subtitle;
+  const subtitle = data.subtitle
+    ? isDuration
+      ? "Duration: " + data.subtitle
+      : data.subtitle
+    : undefined;
   const [hovered, setHovered] = useState<boolean>(false);
   const isPrivate = data.linkText === "Private";
   const isReset = data.linkText === "Reset";
@@ -112,7 +116,7 @@ function MainCard({ data, isDuration, isLoading = false }: MainCardProps) {
             component="div"
             sx={{ color: "var(--mui-palette-text-primary)" }}
           >
-            {isDuration && <span>{subtitle}</span>}
+            {subtitle && <span>{subtitle}</span>}
             <span>{data.description}</span>
           </Stack>
         }
@@ -147,14 +151,14 @@ function MainCard({ data, isDuration, isLoading = false }: MainCardProps) {
           />
         </motion.div>
         <CardContent>
-          <div style={{ position: "relative", height: "2rem" }}>
+          <div style={{ position: "relative", marginBottom: "0.5rem" }}>
             <motion.div
               key="left"
               initial={{ opacity: 1, x: 0 }}
               animate={{ opacity: hovered ? 0 : 1, x: hovered ? 25 : 0 }}
               transition={{ duration: 0.3 }}
               style={{
-                position: "absolute",
+                position: "relative",
                 width: "100%",
                 textAlign: "left",
               }}
@@ -162,10 +166,11 @@ function MainCard({ data, isDuration, isLoading = false }: MainCardProps) {
               <Stack
                 direction="row"
                 justifyContent="space-between"
-                alignItems="center"
+                alignItems="flex-start"
+                gap={1}
               >
                 <Typography variant="h6">{data.title}</Typography>
-                {isReset ? <RefreshIcon /> : <OpenInNew />}
+                {isReset ? <RefreshIcon sx={{ mt: 0.5 }} /> : <OpenInNew sx={{ mt: 0.5 }} />}
               </Stack>
             </motion.div>
 
@@ -176,6 +181,8 @@ function MainCard({ data, isDuration, isLoading = false }: MainCardProps) {
               transition={{ duration: 0.3 }}
               style={{
                 position: "absolute",
+                top: 0,
+                left: 0,
                 width: "100%",
                 textAlign: "center",
               }}
@@ -189,13 +196,15 @@ function MainCard({ data, isDuration, isLoading = false }: MainCardProps) {
             animate={{ opacity: hovered ? 0 : 1, y: 5 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
           >
-            <Typography
-              variant="subtitle1"
-              color="text.primary"
-              marginBottom={"1rem"}
-            >
-              {subtitle}
-            </Typography>
+            {subtitle && (
+              <Typography
+                variant="subtitle1"
+                color="text.primary"
+                marginBottom={"1rem"}
+              >
+                {subtitle}
+              </Typography>
+            )}
             <Typography
               variant="body2"
               color="text.primary"
