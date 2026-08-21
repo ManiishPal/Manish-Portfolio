@@ -109,6 +109,7 @@ function WebCard({ data, isLoading, isPhone }: WebCardProps) {
                   const isStartChip =
                     label.includes("Start") ||
                     label.includes("View Project") ||
+                    label.includes("Certificate") ||
                     label.includes("Live");
                   const isWarningChip = data.isWideOnly ?? false;
 
@@ -246,6 +247,7 @@ function WebCard({ data, isLoading, isPhone }: WebCardProps) {
               const isStartChip =
                 label.includes("Start") ||
                 label.includes("View Project") ||
+                label.includes("Certificate") ||
                 label.includes("Live");
               return (
                 <Chip
