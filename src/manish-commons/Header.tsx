@@ -123,6 +123,9 @@ function Header() {
     if (path === "/3d") {
       return "3D";
     }
+    if (path === "/ai-ml") {
+      return "AI & ML";
+    }
     if (
       ["/education", "/app", "/web", "/questplunge", "/legal"].includes(path)
     ) {
