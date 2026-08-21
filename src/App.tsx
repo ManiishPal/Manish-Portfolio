@@ -11,7 +11,7 @@ import Contact from "./manish-main/Contact.tsx";
 import ThreeD from "./manish-3d/ThreeD.tsx";
 import Aiml from "./manish-aiml/Aiml.tsx";
 import { Application } from "./manish-work/Application.tsx";
-import { Policy } from "./manish-login/Legal.tsx";
+import { Policy } from "./manish-legal/Legal.tsx";
 
 const appTheme = createTheme({
   cssVariables: {
