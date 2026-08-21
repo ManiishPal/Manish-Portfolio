@@ -127,11 +127,8 @@ function Header() {
       return "AI & ML";
     }
     if (
-      ["/education", "/app", "/web", "/questplunge", "/legal"].includes(path)
+      ["/education", "/app", "/web", "/legal"].includes(path)
     ) {
-      if (path === "/questplunge") {
-        return "Quest Plunge";
-      }
       return path.charAt(1).toUpperCase() + path.slice(2);
     } else {
       return "Not Found";

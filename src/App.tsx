@@ -4,7 +4,6 @@ import { orange, pink } from "@mui/material/colors";
 import { GlobalStyles, CssBaseline } from "@mui/material";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Education from "./manish-education/Education.tsx";
-import QuestPlunge from "./manish-game/QuestPlunge.tsx";
 import Web from "./manish-web/Web.tsx";
 import ScrollToTop from "./manish-commons/ScrollToTop.tsx";
 import { NotFound } from "./NotFound.tsx";
@@ -96,7 +95,6 @@ export function App() {
           <Route path="/certifications" element={<Application />} />
           <Route path="/certifications/*" element={<Application />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/questplunge" element={<QuestPlunge />} />
           <Route path="/legal" element={<Policy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

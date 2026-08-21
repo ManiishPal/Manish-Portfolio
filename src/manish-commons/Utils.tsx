@@ -2,13 +2,6 @@ export function openResumeInNewTab() {
   window.open("/Resume.pdf", "_blank");
 }
 
-export function downloadQuestPlunge() {
-  window.open(
-    "https://github.com/ManiishPal/QuestPlunge/releases/download/V1.0.0/Quest.Plunge.1.0.0.Setup.File.exe",
-    "_blank",
-  );
-}
-
 export function openDonatePageInNewTab() {
   window.open(
     "https://razorpay.com/payment-button/pl_TPUU7N9uRMoB8w/view",
