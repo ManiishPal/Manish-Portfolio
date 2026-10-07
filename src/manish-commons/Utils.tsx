@@ -20,3 +20,7 @@ export function openLinkedIn() {
 export function openLeetCode() {
   window.open("https://leetcode.com/u/ManiishPal/", "_blank");
 }
+
+export function openHackerRank() {
+  window.open("https://www.hackerrank.com/profile/Manish__Pal", "_blank");
+}

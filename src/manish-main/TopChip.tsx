@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Chip } from "@mui/material";
 import { GitHub, YouTube, LinkedIn } from "@mui/icons-material";
 import leetcodeLogo from "../assets/leetcode-logo.svg";
+import hackerrankLogo from "../assets/hackerrank-logo.svg";
 
 type TopChipProps = {
   img?: string;
@@ -39,6 +40,15 @@ function getIcon(title: string, img?: string) {
         <img
           src={leetcodeLogo}
           alt="LeetCode"
+          width="20"
+          style={{ position: "relative", bottom: "0.075rem" }}
+        />
+      );
+    case "HackerRank":
+      return (
+        <img
+          src={hackerrankLogo}
+          alt="HackerRank"
           width="20"
           style={{ position: "relative", bottom: "0.075rem" }}
         />

@@ -12,8 +12,13 @@ import {
   workData,
   workDataPhone,
 } from "./manish-main/appData";
-import { openGitHub, openLinkedIn, openLeetCode } from "./manish-commons/Utils";
-import { grey, blue, amber } from "@mui/material/colors";
+import {
+  openGitHub,
+  openLinkedIn,
+  openLeetCode,
+  openHackerRank,
+} from "./manish-commons/Utils";
+import { grey, blue, amber, green } from "@mui/material/colors";
 import TopChip from "./manish-main/TopChip";
 import MainSection from "./manish-main/MainSection";
 import {
@@ -175,6 +180,12 @@ function Home() {
               title="LeetCode"
               color={amber}
               link={openLeetCode}
+            />
+            <TopChip
+              isPhone={isPhone}
+              title="HackerRank"
+              color={green}
+              link={openHackerRank}
             />
           </Stack>
           <MacDock />

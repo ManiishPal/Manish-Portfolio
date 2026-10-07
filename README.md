@@ -148,7 +148,8 @@ Live Demo: **[https://maniishpal.github.io](https://maniishpal.github.io)**
 - **Portfolio**: [https://maniishpal.github.io](https://maniishpal.github.io)
 - **GitHub**: [@ManiishPal](https://github.com/ManiishPal)
 - **LinkedIn**: [Manish Pal](https://linkedin.com)
-- **LeetCode**: [Manish Pal](https://leetcode.com)
+- **LeetCode**: [Manish Pal](https://leetcode.com/u/ManiishPal/)
+- **HackerRank**: [Manish Pal](https://www.hackerrank.com/profile/Manish__Pal)
 
 ---
 
