@@ -36,6 +36,7 @@ import MacDialog from "./manish-commons/MacDialog";
 import { MacDialogContext } from "./manish-main/appData";
 import MacDock from "./manish-macos/MacDock";
 import Background from "./Background";
+import { useWeather } from "./manish-commons/WeatherContext";
 import useGeneralInfo from "./manish-commons/firebaseHooks";
 import { MacNotification } from "./manish-macos/MacNotification";
 import HeaderChip from "./manish-main/HeaderChip";
@@ -67,8 +68,7 @@ function Home() {
   const isPhone = useMediaQuery("(max-width:1000px)");
 
   const { publicAnnouncement, aboutMe: aboutMeText } = useGeneralInfo();
-  const month = new Date().getMonth();
-  const isWinter = month === 10 || month === 11 || month === 0 || month === 1;
+  const { isWinter } = useWeather();
 
   return (
     <>

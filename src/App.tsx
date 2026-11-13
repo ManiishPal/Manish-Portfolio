@@ -12,6 +12,7 @@ import ThreeD from "./manish-3d/ThreeD.tsx";
 import Aiml from "./manish-aiml/Aiml.tsx";
 import { Application } from "./manish-work/Application.tsx";
 import { Policy } from "./manish-legal/Legal.tsx";
+import { WeatherProvider } from "./manish-commons/WeatherContext.tsx";
 
 const appTheme = createTheme({
   cssVariables: {
@@ -83,22 +84,24 @@ export function App() {
           },
         }}
       />
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/web" element={<Web />} />
-          <Route path="/3d" element={<ThreeD />} />
-          <Route path="/app" element={<ThreeD />} />
-          <Route path="/ai-ml" element={<Aiml />} />
-          <Route path="/certifications" element={<Application />} />
-          <Route path="/certifications/*" element={<Application />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/legal" element={<Policy />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+      <WeatherProvider>
+        <Router>
+          <ScrollToTop />
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/education" element={<Education />} />
+            <Route path="/web" element={<Web />} />
+            <Route path="/3d" element={<ThreeD />} />
+            <Route path="/app" element={<ThreeD />} />
+            <Route path="/ai-ml" element={<Aiml />} />
+            <Route path="/certifications" element={<Application />} />
+            <Route path="/certifications/*" element={<Application />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/legal" element={<Policy />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </WeatherProvider>
     </ThemeProvider>
   );
 }

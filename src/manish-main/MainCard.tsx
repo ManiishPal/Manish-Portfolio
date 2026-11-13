@@ -11,6 +11,9 @@ import {
   ListItemText,
   ListItemAvatar,
   Avatar,
+  IconButton,
+  Tooltip,
+  Box,
 } from "@mui/material";
 import { useContext, useState } from "react";
 import { MacDialogContext, type genericAppData } from "./appData";
@@ -21,6 +24,7 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { OpenInNew } from "@mui/icons-material";
+import { WeatherToggleButton } from "./WeatherToggleButton";
 
 type MainCardProps = {
   data: genericAppData;
@@ -100,7 +104,33 @@ function MainCard({ data, isDuration, isLoading = false }: MainCardProps) {
           >
             {data.title}
             {isReset ? (
-              <RefreshIcon />
+              <Stack
+                direction="row"
+                alignItems="center"
+                spacing={0.5}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <WeatherToggleButton />
+                <Tooltip title="Reset site settings & cache">
+                  <IconButton
+                    size="small"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      sessionStorage.clear();
+                      localStorage.clear();
+                      window.location.reload();
+                    }}
+                    sx={{
+                      color: "var(--mui-palette-text-primary)",
+                      "&:hover": {
+                        color: "var(--mui-palette-primary-main)",
+                      },
+                    }}
+                  >
+                    <RefreshIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
+              </Stack>
             ) : isPrivate ? (
               <BlockIcon />
             ) : (
@@ -166,12 +196,38 @@ function MainCard({ data, isDuration, isLoading = false }: MainCardProps) {
               <Stack
                 direction="row"
                 justifyContent="space-between"
-                alignItems="flex-start"
+                alignItems="center"
                 gap={1}
               >
                 <Typography variant="h6">{data.title}</Typography>
                 {isReset ? (
-                  <RefreshIcon sx={{ mt: 0.5 }} />
+                  <Stack
+                    direction="row"
+                    alignItems="center"
+                    spacing={0.5}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <WeatherToggleButton />
+                    <Tooltip title="Reset site settings & cache">
+                      <IconButton
+                        size="small"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          sessionStorage.clear();
+                          localStorage.clear();
+                          window.location.reload();
+                        }}
+                        sx={{
+                          color: "var(--mui-palette-text-primary)",
+                          "&:hover": {
+                            color: "var(--mui-palette-primary-main)",
+                          },
+                        }}
+                      >
+                        <RefreshIcon fontSize="small" />
+                      </IconButton>
+                    </Tooltip>
+                  </Stack>
                 ) : (
                   <OpenInNew sx={{ mt: 0.5 }} />
                 )}
@@ -221,40 +277,111 @@ function MainCard({ data, isDuration, isLoading = false }: MainCardProps) {
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: hovered ? 1 : 0, y: hovered ? -50 : 40 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
+            style={{
+              pointerEvents: hovered ? "auto" : "none",
+              position: "relative",
+              zIndex: 10,
+            }}
           >
-            <StyledStack
-              sx={{
-                backgroundColor: isReset
-                  ? "green"
-                  : isPrivate
+            {isReset ? (
+              <Stack
+                direction="row"
+                spacing={1.5}
+                alignItems="center"
+                justifyContent="center"
+                sx={{
+                  position: "absolute",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: "max-content",
+                  maxWidth: "100%",
+                }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <WeatherToggleButton variant="pill" />
+                <Tooltip
+                  title="Reset site settings & reload"
+                  arrow
+                  placement="top"
+                >
+                  <Box
+                    component="button"
+                    type="button"
+                    onClick={(e: React.MouseEvent) => {
+                      e.stopPropagation();
+                      sessionStorage.clear();
+                      localStorage.clear();
+                      window.location.reload();
+                    }}
+                    sx={{
+                      border: "1px solid rgba(200, 230, 201, 0.45)",
+                      outline: "none",
+                      borderRadius: "2rem",
+                      minHeight: "42px",
+                      padding: "0.35rem 1.1rem",
+                      background:
+                        "linear-gradient(135deg, #43a047 0%, #2e7d32 50%, #1b5e20 100%)",
+                      boxShadow:
+                        "0 4px 14px rgba(27, 94, 32, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25)",
+                      color: "#fff",
+                      fontFamily: "Trebuchet",
+                      fontSize: "0.95rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.02em",
+                      cursor: "pointer",
+                      userSelect: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      transition: "all 0.18s cubic-bezier(0.4, 0, 0.2, 1)",
+                      "&:hover": {
+                        transform: "translateY(-2px)",
+                        boxShadow:
+                          "0 6px 18px rgba(27, 94, 32, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35)",
+                        filter: "brightness(1.08)",
+                      },
+                      "&:active": {
+                        transform: "translateY(1px) scale(0.96)",
+                        boxShadow: "0 2px 8px rgba(27, 94, 32, 0.4)",
+                      },
+                    }}
+                  >
+                    <RefreshIcon sx={{ fontSize: "1.15rem" }} />
+                    <span>Reset</span>
+                  </Box>
+                </Tooltip>
+              </Stack>
+            ) : (
+              <StyledStack
+                sx={{
+                  backgroundColor: isPrivate
                     ? "red"
                     : "var(--mui-palette-secondary-main)",
-              }}
-              direction="row"
-              spacing={"1rem"}
-              alignItems="center"
-              justifyContent="center"
-            >
-              <p>{data.linkText}</p>
-              {isReset ? (
-                <RefreshIcon />
-              ) : isPrivate ? (
-                <BlockIcon />
-              ) : (
-                <motion.div
-                  initial={{ x: -10, y: 2.75 }}
-                  animate={{ x: 10, y: 2.75 }}
-                  transition={{
-                    duration: 0.4,
-                    ease: "linear",
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                >
-                  <ArrowForwardIcon />
-                </motion.div>
-              )}
-            </StyledStack>
+                }}
+                direction="row"
+                spacing={"1rem"}
+                alignItems="center"
+                justifyContent="center"
+              >
+                <p>{data.linkText}</p>
+                {isPrivate ? (
+                  <BlockIcon />
+                ) : (
+                  <motion.div
+                    initial={{ x: -10, y: 2.75 }}
+                    animate={{ x: 10, y: 2.75 }}
+                    transition={{
+                      duration: 0.4,
+                      ease: "linear",
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                    }}
+                  >
+                    <ArrowForwardIcon />
+                  </motion.div>
+                )}
+              </StyledStack>
+            )}
           </motion.div>
         </CardContent>
       </CardActionArea>

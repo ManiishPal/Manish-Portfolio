@@ -21,6 +21,7 @@ import sun from "./assets/img-parallax/sun.svg";
 import moon from "./assets/img-parallax/moon.svg";
 import nightsky from "./assets/img-parallax/stars.jpg";
 import { useGetImages } from "./manish-commons/Hooks";
+import { useWeather } from "./manish-commons/WeatherContext";
 import { motion } from "framer-motion";
 import "./styles/Image.css";
 import { ArrowCircleDownOutlined, SwipeUpOutlined } from "@mui/icons-material";
@@ -48,8 +49,7 @@ export default function Background() {
   const { mode } = useColorScheme();
   const isLight = mode === "light";
 
-  const month = new Date().getMonth();
-  const isWinter = month === 10 || month === 11 || month === 0 || month === 1;
+  const { isWinter } = useWeather();
 
   return (
     <>
